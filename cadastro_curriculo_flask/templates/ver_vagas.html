@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Vagas Disponíveis{% endblock %}
+
+{% block content %}
+<h1>Vagas Disponíveis</h1>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>Título</th><th>Empresa</th><th>Descrição</th><th>Contato</th>
+  </tr>
+  {% for vaga in vagas %}
+  <tr>
+    <td>{{ vaga[1] }}</td>
+    <td>{{ vaga[2] }}</td>
+    <td>{{ vaga[3] }}</td>
+    <td>{{ vaga[4] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
+
+
+
