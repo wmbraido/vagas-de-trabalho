@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Currículos{% endblock %}
+
+{% block content %}
+<h1>Lista de Currículos</h1>
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>Nome</th><th>Email</th><th>Telefone</th><th>Área</th><th>Experiência</th><th>Arquivo</th><th>Ações</th>
+  </tr>
+  {% for c in curriculos %}
+  <tr>
+    <td>{{ c[1] }}</td>
+    <td>{{ c[2] }}</td>
+    <td>{{ c[3] }}</td>
+    <td>{{ c[4] }}</td>
+    <td>{{ c[5] }}</td>
+    <td>
+      {% if c[6] %}
+      <a href="{{ url_for('download_arquivo', nome_arquivo=c[6]) }}" target="_blank">Download</a>
+      {% else %}
+      -
+      {% endif %}
+    </td>
+    <td>
+      <form action="{{ url_for('apagar_curriculo', id=c[0]) }}" method="post" onsubmit="return confirm('Confirma apagar este currículo?');">
+        <button type="submit">Apagar</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
+
+
+
+
